@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcEmployee";
+
+package employee;
+
+// The greeting service def
+service Employee {
+    rpc GetEmployeeInfo (EmployeeInfoRequest) returns (EmployeeInfoResponse);
+}
+
+// The request message containing employee ID
+message EmployeeInfoRequest {
+    int32 ID = 1;
+}
+
+message GStatus {
+    bool Successfull = 1;
+    int32 ErrorCode = 2;
+    string ErrorMessage = 3;
+}
+
+message EmployeeInfo {
+    int32 ID = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    string Address = 4;
+    string PhoneNumber = 5;
+    string EmailAddress = 6;
+}
+
+// The response message containing employee data
+message EmployeeInfoResponse {
+    EmployeeInfo Employee = 1;
+    GStatus Status = 2;
+}
